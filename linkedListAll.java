@@ -1,45 +1,92 @@
-package singlyLikedList;
-
-//import java.util.LinkedList;
+package singlyLinkedList;
 
 public class linkedListAll {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ListNode newNode = new ListNode(14);
+		ListNode newNode = new ListNode(1);
+		linkedListAll list = new linkedListAll();
 		
-		//traverseList(newNode);
+		newNode = list.addAtEndList(newNode,2);	
+		newNode = list.addAtEndList(newNode,3);
+		newNode = list.addAtEndList(newNode,4);
 		
-		addAtEndList(newNode,2);
-		addAtEndList(newNode,3);
+		newNode = list.addAtBegin(newNode, 0);
+		
+		newNode = list.addAtPosition(newNode, 6, 3);
+		list.traverseList(newNode);
+		
+		int len = list.lengthOfList(newNode);
+		System.out.println("Length of List : "+len);
 	}
 	
+	
+	// Length of the linked list
+	public int lengthOfList(ListNode head){
+		ListNode currentHead = head;
+		int len = 0;
+		
+		while(currentHead!=null){
+			currentHead = currentHead.getNext();
+			len++;
+		}
+		return len;
+	}
 	// Traversing the linked list
-	public static void traverseList(ListNode head){
+	public void traverseList(ListNode head){
 		ListNode currentHead = head;
 		
 		while(currentHead!=null){
-			System.out.println(currentHead.data);
+			System.out.print(currentHead.getData()+" -> ");
 			currentHead = currentHead.getNext();
 		}
+		System.out.println(currentHead);
 	}
 	
-	public static void addAtEndList(ListNode head, int data){
+	// Insert at the end of the Linked List
+	public ListNode addAtEndList(ListNode head, int data){
 		ListNode currentHead = head;
 		ListNode nextNode = new ListNode(data);
-		System.out.print(currentHead.data);
-		System.out.print("->");
 		
 		while(currentHead.getNext()!=null){
-			//System.out.print(currentHead.data);
 			currentHead = currentHead.getNext();
 		}
 		
 		currentHead.setNext(nextNode);
 		nextNode.setNext(null);
-		System.out.print(nextNode.data);
-		System.out.print("->" + nextNode.getNext());
-		System.out.println("");
+		
+		return head;
 	}
+	
+	// Insert at the begin of the linked list
+	public ListNode addAtBegin(ListNode head, int data){
+		ListNode currentHead = head;
+		ListNode newNode = new ListNode(data);
+		
+		newNode.setNext(currentHead);
+		
+		return newNode;
+	}
+	
+	// Insert at any specific position in linked list
+	public ListNode addAtPosition(ListNode head, int data, int position){
+		ListNode tempHead = head;
+		ListNode currentHead = head;
+		
+		ListNode newNode = new ListNode(data);
+		int i = 1;
+		
+		while(i<position){
+			currentHead = currentHead.getNext();
+			i++;
+		}
+		
+		newNode.setNext(currentHead.getNext());
+		currentHead.setNext(newNode);
+		
+		return tempHead;
+	}
+	
+	
 }
