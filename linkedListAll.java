@@ -1,4 +1,4 @@
-package singlyLinkedList;
+package singlyLikedList;
 
 public class linkedListAll {
 
@@ -34,7 +34,14 @@ public class linkedListAll {
 		newNode = list.delPositionNode(newNode, 3);
 		list.traverseList(newNode);
 		
-		newNode = list.reverseList(newNode);
+		//newNode = list.reverseList(newNode);
+		//list.traverseList(newNode);
+		
+		//newNode = list.clear(newNode);
+		//list.traverseList(newNode);
+		
+		ListNode matchNode = new ListNode(6);
+		newNode = list.removeMatched(newNode, matchNode);
 		list.traverseList(newNode);
 	}
 	
@@ -78,7 +85,6 @@ public class linkedListAll {
 			currentHead = currentHead.getNext();
 		}
 		
-		
 		currentHead.setNext(nextNode);			// Assign next pointer of current node to newNode
 		nextNode.setNext(null);					// Assign null as next pointer to newNode
 		
@@ -87,15 +93,9 @@ public class linkedListAll {
 	
 	// Insert at the begin of the linked list
 	public ListNode addAtBegin(ListNode head, int data){
-		if(head == null)
-		{
-			head.setData(data);
-			return head;
-		}
 		
 		ListNode currentHead = head;
-		ListNode newNode = new ListNode(data);
-		
+		ListNode newNode = new ListNode(data);	
 		
 		newNode.setNext(currentHead);			// Update the next pointer of newNode to the currentHead
 		
@@ -190,9 +190,35 @@ public class linkedListAll {
 			currentNode = currentNode.getNext();
 			//System.out.println(currentNode.getData());
 		}
-		
-		
-		
 		return tempNode;
+	}
+	
+	// Remove everything from the list
+	public ListNode clear(ListNode head){
+		head = null;
+		
+		return head;
+	}
+	
+	// Remove a node matching the specified node from the list
+	public synchronized ListNode removeMatched(ListNode head, ListNode node){
+		if(head == null)
+			return head;
+		
+		if(node.equals(head))
+		{
+			head = head.getNext();
+			return head;
+		}
+		
+		ListNode tempHead = head;
+		ListNode currentHead = head;
+		
+		while(!(currentHead.equals(node))){
+			currentHead = currentHead.getNext();
+		}
+		
+		currentHead.setNext(currentHead.getNext().getNext());
+		return tempHead;
 	}
 }
