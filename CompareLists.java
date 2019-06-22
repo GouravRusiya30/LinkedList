@@ -8,19 +8,18 @@
      
   }
 */
-/**
- * @author Gourav
- */
-int CompareLists(Node headA, Node headB) {
-    // This is a "method-only" submission. 
-    // You only need to complete this method
-    
-    while(headA!=null || headB!=null){   
-        if(headA==null || headB==null || (headA.data != headB.data))
-            return 0;
-        
-        headA = headA.next;
-        headB = headB.next;
-    }
-    return 1;
+public class CompareLists {
+	int CompareLists(Node headA, Node headB) {
+		// This is a "method-only" submission.
+		// You only need to complete this method
+
+		while (headA != null || headB != null) {
+			if (headA == null || headB == null || (headA.data != headB.data))
+				return 0;
+
+			headA = headA.next;
+			headB = headB.next;
+		}
+		return 1;
+	}
 }

@@ -1,12 +1,17 @@
-package singlyLikedList;
-
-public class linkedListAll {
-
+/**
+ * Useful methods for LinkedList
+ * 
+ * @author gouravrusiya
+ *
+ */
+public class LinkedListAll {
+	
+	// testing all below methods
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		ListNode newNode = new ListNode(1);
-		linkedListAll list = new linkedListAll();
+		LinkedListAll list = new LinkedListAll();
 		
 		// Testing all the methods
 		

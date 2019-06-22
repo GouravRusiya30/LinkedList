@@ -1,6 +1,9 @@
-package singlyLikedList;
-
-// Type Declaration of singly linked list
+/**
+ * Type Declaration of singly linked list
+ * 
+ * @author gouravrusiya
+ *
+ */
 public class ListNode {
 	public int data;			//Contains data value
 	private ListNode next;		//Pointer to next node
@@ -30,5 +33,3 @@ public class ListNode {
 		return this.next;
 	}
 }
-
-
